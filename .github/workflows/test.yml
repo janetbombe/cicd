@@ -14,8 +14,9 @@ jobs:
           echo "PACKAGES_FILE_LIST<<EOF" >> "${GITHUB_ENV}"
           ls | grep -E "*.(tar.gz|zip)$" >> "${GITHUB_ENV}"
           echo "EOF" >> "${GITHUB_ENV}"
+          cat "${GITHUB_ENV}"
       - name: debug
         run: |
-          echo "$PACKAGES_FILE_LIST"
-          echo "$MY_ENV_TEST"
-          echo "$MY_ENV"
+          echo "PACKAGES_FILE_LIST: $PACKAGES_FILE_LIST"
+          echo "MY_ENV_TEST: $MY_ENV_TEST"
+          echo "MY_ENV: $MY_ENV"
