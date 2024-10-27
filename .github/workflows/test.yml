@@ -9,10 +9,13 @@ jobs:
     steps:
       - name : env
         run: |
-          touch a.zip b.zip c.zip d.zip e.zip f.zip g.zip h.zip i.zip j.zip k.zip l.zip m.zip n.zip o.zip p.zip q.zip r.zip s.zip t.zip u.zip v.zip w.zip x.zip y.zip TEST=TEST.zip
+          touch a.zip b.zip c.zip d.zip e.zip f.zip g.zip h.zip i.zip j.zip k.zip l.zip m.zip n.zip o.zip p.zip q.zip r.zip s.zip t.zip u.zip v.zip w.zip x.zip y.zip MY_ENV_TEST=TEST.zip
           touch "MY_ENV=test.zip"
           echo "PACKAGES_FILE_LIST<<EOF" >> "${GITHUB_ENV}"
           ls | grep -E "*.(tar.gz|zip)$" >> "${GITHUB_ENV}"
           echo "EOF" >> "${GITHUB_ENV}"
       - name: debug
-        run: env
+        run: |
+          echo "$PACKAGES_FILE_LIST"
+          echo "$MY_ENV_TEST"
+          echo "$MY_ENV"
