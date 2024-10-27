@@ -1,0 +1,18 @@
+name: test
+
+on:
+  push:
+  
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name : env
+        run: |
+          touch a.zip
+          touch "MY_ENV=test.zip"
+          echo "PACKAGES_FILE_LIST<<EOF" >> "${GITHUB_ENV}"
+          ls | grep -E "*.(tar.gz|zip)$" >> "${GITHUB_ENV}"
+          echo "EOF" >> "${GITHUB_ENV}"
+      - name: debug
+        run: env
