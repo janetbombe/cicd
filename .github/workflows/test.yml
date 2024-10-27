@@ -9,7 +9,7 @@ jobs:
     steps:
       - name : env
         run: |
-          touch a.zip b.zip c.zip d.zip e.zip f.zip g.zip h.zip i.zip j.zip k.zip l.zip m.zip n.zip o.zip p.zip q.zip r.zip s.zip t.zip u.zip v.zip w.zip x.zip y.zip MY_ENV_TEST=TEST.zip
+          touch EOF.zip "EOF\nb.zip" "=c.zip" d.zip e.zip f.zip g.zip h.zip i.zip j.zip k.zip l.zip m.zip n.zip o.zip p.zip q.zip r.zip s.zip t.zip u.zip v.zip w.zip x.zip y.zip MY_ENV_TEST=TEST.zip
           touch "MY_ENV=test.zip"
           echo "PACKAGES_FILE_LIST<<EOF" >> "${GITHUB_ENV}"
           ls | grep -E "*.(tar.gz|zip)$" >> "${GITHUB_ENV}"
